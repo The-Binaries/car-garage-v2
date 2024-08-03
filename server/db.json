@@ -1,22 +1,13 @@
 {
   "cars": [
     {
-      "id": "1",
-      "make": "BMW",
-      "model": "X5",
-      "color": "Black",
-      "year": 2019,
-      "plateNumber": "ABC123",
-      "fault": null
-    },
-    {
       "id": "2",
       "make": "Audi",
       "model": "Q7",
       "color": "White",
       "year": 2018,
       "plateNumber": "DEF456",
-      "fault": null
+      "fault": "hello world"
     },
     {
       "id": "3",
@@ -25,7 +16,7 @@
       "color": "Silver",
       "year": 2017,
       "plateNumber": "GHI789",
-      "fault": null
+      "fault": "hello world"
     }
   ],
   "mechanics": [

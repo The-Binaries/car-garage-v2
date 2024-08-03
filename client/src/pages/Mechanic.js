@@ -94,7 +94,7 @@ export default function MechanicPage() {
   return (
     <div>
       <MechanicList mechanics={mechanics} onDelete={onDelete} onEdit={onEdit} />
-      <button className="ui button primary" onClick={() => setIsModalOpen(true)}>
+      <button style={{marginLeft: '7rem'}} className="ui button primary" onClick={() => setIsModalOpen(true)}>
         Add a New Mechanic
       </button>
       <MechanicForm
