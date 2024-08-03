@@ -1,7 +1,7 @@
 function App() {
   return (
-    <div >
-      Hello world
+    <div>
+      <button class="ui button">Follow</button>
     </div>
   );
 }
