@@ -8,7 +8,7 @@ export default function Navbar({ auth = false, handleLogout }) {
     >
       <div id="logo" className="text-white text-lg">
         <a className="text-white text-3xl" href="/">
-          Rayamajhi Borra Car Garage
+          Rayamajhi Boora Car Garage
         </a>
       </div>
       <div className="text-white text-lg">

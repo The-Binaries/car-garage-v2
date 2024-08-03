@@ -61,15 +61,21 @@ export default function MechanicPage() {
   };
 
   const onDelete = (id) => {
-    axios
-      .delete(`${Mechanic}/${id}`)
-      .then((response) => {
-        console.log("Mechanic deleted:", response.data);
-        fetchMechanics();
-      })
-      .catch((error) => {
-        console.error("Error deleting mechanic:", error);
-      });
+    const isConfirmed = window.confirm(
+      "Do you really want to delete this object permanently?"
+    );
+
+    if (isConfirmed) {
+      axios
+        .delete(`${Mechanic}/${id}`)
+        .then((response) => {
+          console.log("Mechanic deleted:", response.data);
+          fetchMechanics();
+        })
+        .catch((error) => {
+          console.error("Error deleting mechanic:", error);
+        });
+    }
   };
 
   const handleSubmit = (formData) => {
@@ -94,7 +100,11 @@ export default function MechanicPage() {
   return (
     <div>
       <MechanicList mechanics={mechanics} onDelete={onDelete} onEdit={onEdit} />
-      <button style={{marginLeft: '7rem'}} className="ui button primary" onClick={() => setIsModalOpen(true)}>
+      <button
+        style={{ marginLeft: "7rem" }}
+        className="ui button primary"
+        onClick={() => setIsModalOpen(true)}
+      >
         Add a New Mechanic
       </button>
       <MechanicForm

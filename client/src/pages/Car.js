@@ -61,15 +61,21 @@ export default function CarPage() {
   };
 
   const onDelete = (id) => {
-    axios
-      .delete(`${CarsEndpoint}/${id}`)
-      .then((response) => {
-        console.log("Car deleted:", response.data);
-        fetchCars();
-      })
-      .catch((error) => {
-        console.error("Error deleting car:", error);
-      });
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this car permanently?"
+    );
+
+    if (isConfirmed) {
+      axios
+        .delete(`${CarsEndpoint}/${id}`)
+        .then((response) => {
+          console.log("Car deleted:", response.data);
+          fetchCars();
+        })
+        .catch((error) => {
+          console.error("Error deleting car:", error);
+        });
+    }
   };
 
   const handleSubmit = (formData) => {
@@ -94,7 +100,11 @@ export default function CarPage() {
   return (
     <div>
       <CarList cars={cars} onDelete={onDelete} onEdit={onEdit} />
-      <button style={{marginLeft: '7rem'}} className="ui button primary" onClick={() => setIsModalOpen(true)}>
+      <button
+        style={{ marginLeft: "7rem" }}
+        className="ui button primary"
+        onClick={() => setIsModalOpen(true)}
+      >
         Add a New Car
       </button>
       <CarForm
