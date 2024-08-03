@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import CarForm from "../components/CarForm";
-import MechanicForm from "../components/MechanicForm";
-
+import MechanicPage from "./Mechanic";
+import CarPage from "./Car";
 function Dashboard() {
   const [view, setView] = useState("car");
 
@@ -25,7 +24,7 @@ function Dashboard() {
           Car
         </button>
       </div>
-      {view === "car" ? <CarForm /> : <MechanicForm />}
+      {view === "car" ? <CarPage /> : <MechanicPage />}
     </>
   );
 }

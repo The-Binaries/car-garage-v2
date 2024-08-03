@@ -83,7 +83,7 @@ const MechanicForm = () => {
           </div>
         </div>
         <button type="submit" className="ui button primary">
-          Submit
+          Add a new Mechanic
         </button>
       </form>
     </div>
