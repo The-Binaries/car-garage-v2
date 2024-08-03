@@ -20,7 +20,7 @@ const MechanicList = ({ mechanics, onEdit, onDelete }) => {
                 <td data-label="Name">
                   {mechanic.firstName} {mechanic.middleName} {mechanic.lastName}
                 </td>
-                <td data-label="Expert Domain">{mechanic.expertDomain}</td>
+                <td data-label="Expert Domain">{mechanic.speciality}</td>
                 <td data-label="Experience">{mechanic.experience}</td>
                 <td data-label="Actions">
                   <button className="ui button" onClick={() => onEdit(index)}>
