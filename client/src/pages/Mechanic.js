@@ -7,34 +7,8 @@ const Mechanic = "http://localhost:8000/mechanics";
 
 export default function MechanicPage() {
   const [mechanics, setMechanics] = useState([]);
-
-  const onDelete = (id) => {
-    axios
-      .delete(`${Mechanic}/${id}`)
-      .then((response) => {
-        console.log("Mechanic deleted:", response.data);
-        fetchMechanics();
-      })
-      .catch((error) => {
-        console.error("Error deleting mechanic:", error);
-      });
-  };
-
-  const onEdit = (id, formData) => {
-    axios
-      .put(`${Mechanic}/${id}`, formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log("Mechanic updated:", response.data);
-        fetchMechanics();
-      })
-      .catch((error) => {
-        console.error("Error updating mechanic:", error);
-      });
-  };
+  const [selectedMechanic, setSelectedMechanic] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchMechanics = () => {
     axios
@@ -48,7 +22,7 @@ export default function MechanicPage() {
       });
   };
 
-  const addMechanics = (formData) => {
+  const addMechanic = (formData) => {
     axios
       .post(Mechanic, formData, {
         headers: {
@@ -64,6 +38,55 @@ export default function MechanicPage() {
       });
   };
 
+  const updateMechanic = (formData) => {
+    axios
+      .put(`${Mechanic}/${selectedMechanic.id}`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log("Mechanic updated:", response.data);
+        fetchMechanics();
+      })
+      .catch((error) => {
+        console.error("Error updating mechanic:", error);
+      });
+  };
+
+  const onEdit = (id) => {
+    const mechanic = mechanics.find((m) => m.id === id);
+    setSelectedMechanic(mechanic);
+    setIsModalOpen(true);
+  };
+
+  const onDelete = (id) => {
+    axios
+      .delete(`${Mechanic}/${id}`)
+      .then((response) => {
+        console.log("Mechanic deleted:", response.data);
+        fetchMechanics();
+      })
+      .catch((error) => {
+        console.error("Error deleting mechanic:", error);
+      });
+  };
+
+  const handleSubmit = (formData) => {
+    if (selectedMechanic) {
+      updateMechanic(formData);
+    } else {
+      addMechanic(formData);
+    }
+    setIsModalOpen(false);
+    setSelectedMechanic(null);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedMechanic(null);
+  };
+
   useEffect(() => {
     fetchMechanics();
   }, []);
@@ -71,7 +94,15 @@ export default function MechanicPage() {
   return (
     <div>
       <MechanicList mechanics={mechanics} onDelete={onDelete} onEdit={onEdit} />
-      <MechanicForm onSubmit={addMechanics} />
+      <button className="ui button primary" onClick={() => setIsModalOpen(true)}>
+        Add a New Mechanic
+      </button>
+      <MechanicForm
+        onSubmit={handleSubmit}
+        data={selectedMechanic || {}}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }

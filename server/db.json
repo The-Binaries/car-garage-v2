@@ -30,20 +30,12 @@
   ],
   "mechanics": [
     {
-      "id": "1",
-      "firstName": "John",
-      "middleName": "Prasad",
-      "lastName": "Doe",
-      "speciality": "Engine",
-      "experience": 5
-    },
-    {
-      "id": "088b",
       "firstName": "Sea",
       "middleName": "Moon",
       "lastName": "Pandey",
-      "speciality": "Pipelining",
-      "experience": "500"
+      "speciality": "Plumbing",
+      "experience": "50",
+      "id": "088b"
     }
   ],
   "admin": [
