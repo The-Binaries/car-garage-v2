@@ -28,18 +28,23 @@ function App() {
     localStorage.setItem("auth", JSON.stringify(value));
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("auth");
+    setAuth(false);
+  };
+
   return (
     <Fragment>
-      <Navbar />
+      <Navbar auth={auth} handleLogout={handleLogout} />
       <Router>
         <Routes>
           {auth ? (
-            <Route path="/login" element={<Navigate to="/admin" />} />
+            <Route path="/login" element={<Navigate to="/dashboard" />} />
           ) : (
             <Route path="/login" element={<Login setAuth={handleSetAuth} />} />
           )}
           <Route
-            path="/admin"
+            path="/dashboard"
             element={<ProtectedRoute auth={auth} component={AdminDashboard} />}
           />
           <Route path="/" element={<h2>Home Page</h2>} />
