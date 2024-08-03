@@ -6,12 +6,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import Navbar from "./components/Navbar";
-
-function AdminDashboard() {
-  return <h2>Admin Dashboard</h2>;
-}
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -45,7 +42,7 @@ function App() {
           )}
           <Route
             path="/dashboard"
-            element={<ProtectedRoute auth={auth} component={AdminDashboard} />}
+            element={<ProtectedRoute auth={auth} component={Dashboard} />}
           />
           <Route path="/" element={<h2>Home Page</h2>} />
         </Routes>
