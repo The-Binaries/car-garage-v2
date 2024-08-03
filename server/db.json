@@ -35,5 +35,11 @@
             "specialty": "Engine",
             "experience": 5
         }
+    ],
+    "admin": [
+        {
+            "username": "admin",
+            "password": "admin"
+        }
     ]
 }
