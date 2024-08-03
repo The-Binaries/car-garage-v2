@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MechanicForm = ({ onSubmit, data }) => {
+const MechanicForm = ({ onSubmit, data = { } }) => {
   const initialFormData = {
     firstName: data.firstName || "",
     middleName: data.middleName || "",
