@@ -32,7 +32,9 @@ const MechanicForm = ({ onSubmit, data = {}, isOpen, onClose }) => {
 
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <Modal.Header>{data.id ? "Edit Mechanic" : "Add a New Mechanic"}</Modal.Header>
+      <Modal.Header>
+        {data.id ? "Edit Mechanic" : "Add a New Mechanic"}
+      </Modal.Header>
       <Modal.Content>
         <form className="ui form" onSubmit={handleSubmit}>
           <div className="three fields">
@@ -55,7 +57,6 @@ const MechanicForm = ({ onSubmit, data = {}, isOpen, onClose }) => {
                 placeholder="Middle Name"
                 value={formData.middleName}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="field">

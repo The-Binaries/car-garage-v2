@@ -15,7 +15,7 @@ export default function Navbar({ auth = false, handleLogout }) {
         <ul className="flex">
           <li>
             {auth ? (
-              <div className="flex gap-4">
+              <div className="flex gap-16">
                 <a className="text-white text-3xl" href="/dashboard">
                   Dashboard
                 </a>
