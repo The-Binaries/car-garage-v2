@@ -13,7 +13,7 @@ function Login({ setAuth }) {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `http://localhost:8000/dashboard?username=${username}&password=${password}`
+        `http://localhost:8000/admin?username=${username}&password=${password}`
       );
       if (response.data.length > 0) {
         setAuth(true);
