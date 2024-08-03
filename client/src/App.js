@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -44,7 +45,7 @@ function App() {
             path="/dashboard"
             element={<ProtectedRoute auth={auth} component={Dashboard} />}
           />
-          <Route path="/" element={<h2>Home Page</h2>} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </Fragment>
