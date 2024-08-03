@@ -6,7 +6,7 @@
             "model": "X5",
             "color": "Black",
             "year": 2019,
-            "plate_number": "ABC123",
+            "plateNumber": "ABC123",
             "fault": null
         },
         {
@@ -15,7 +15,7 @@
             "model": "Q7",
             "color": "White",
             "year": 2018,
-            "plate_number": "DEF456",
+            "plateNumber": "DEF456",
             "fault": null
         },
         {
@@ -24,15 +24,17 @@
             "model": "GLE",
             "color": "Silver",
             "year": 2017,
-            "plate_number": "GHI789",
+            "plateNumber": "GHI789",
             "fault": null
         }
     ],
     "mechanics": [
         {
             "id": 1,
-            "name": "John Doe",
-            "specialty": "Engine",
+            "firstName": "John",
+            "middleName": "Prasad",
+            "lastName": "Doe",
+            "speciality": "Engine",
             "experience": 5
         }
     ],
