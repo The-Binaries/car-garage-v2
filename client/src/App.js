@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -10,10 +15,26 @@ function AdminDashboard() {
 function App() {
   const [auth, setAuth] = useState(false);
 
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("auth");
+    if (storedAuth) {
+      setAuth(JSON.parse(storedAuth));
+    }
+  }, []);
+
+  const handleSetAuth = (value) => {
+    setAuth(value);
+    localStorage.setItem("auth", JSON.stringify(value));
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login setAuth={setAuth} />} />
+        {auth ? (
+          <Route path="/login" element={<Navigate to="/admin" />} />
+        ) : (
+          <Route path="/login" element={<Login setAuth={handleSetAuth} />} />
+        )}
         <Route
           path="/admin"
           element={<ProtectedRoute auth={auth} component={AdminDashboard} />}

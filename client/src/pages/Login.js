@@ -17,7 +17,7 @@ function Login({ setAuth }) {
       );
       if (response.data.length > 0) {
         setAuth(true);
-        navigate("/admin");
+        navigate("/admin"); // Navigate to the /admin route
       } else {
         setError("Invalid username or password");
       }
