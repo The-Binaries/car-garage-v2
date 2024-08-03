@@ -15,23 +15,20 @@ const MechanicList = ({ mechanics, onEdit, onDelete }) => {
         </thead>
         <tbody>
           {mechanics && mechanics.length > 0 ? (
-            mechanics.map((mechanic) => (
-              <tr key={mechanic.id}>
+            mechanics.map((mechanic, index) => (
+              <tr key={index}>
                 <td data-label="Name">
                   {mechanic.firstName} {mechanic.middleName} {mechanic.lastName}
                 </td>
                 <td data-label="Expert Domain">{mechanic.speciality}</td>
                 <td data-label="Experience">{mechanic.experience}</td>
                 <td data-label="Actions">
-                  <button
-                    className="ui button"
-                    onClick={() => onEdit(mechanic.id)}
-                  >
+                  <button className="ui button" onClick={() => onEdit(index)}>
                     Edit
                   </button>
                   <button
                     className="ui button red"
-                    onClick={() => onDelete(mechanic.id)}
+                    onClick={() => onDelete(index)}
                   >
                     Delete
                   </button>

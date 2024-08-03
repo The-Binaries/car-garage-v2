@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const MechanicForm = ({ onSubmit }) => {
+const MechanicForm = ({ onSubmit, data }) => {
   const initialFormData = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    speciality: "",
-    experience: "",
+    firstName: data.firstName || "",
+    middleName: data.middleName || "",
+    lastName: data.lastName || "",
+    speciality: data.speciality || "",
+    experience: data.experience || "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
