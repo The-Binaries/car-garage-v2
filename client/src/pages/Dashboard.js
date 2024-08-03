@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MechanicPage from "./Mechanic";
 import CarPage from "./Car";
 function Dashboard() {
-  const [view, setView] = useState("car");
+  const [view, setView] = useState("mechanic");
 
   return (
     <>

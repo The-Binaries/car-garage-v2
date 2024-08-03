@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MechanicForm from "../components/MechanicForm";
 import MechanicList from "../components/MechanicList";
+
+const Mechanic = "http://localhost:8000/mechanics";
+
 export default function MechanicPage() {
   const [mechanics, setMechanics] = useState([]);
 
   const onDelete = (id) => {
-    // Send a DELETE request to the server to delete the mechanic with the given id
     axios
-      .delete(`http://localhost:8000/mechanics/${id}`)
+      .delete(`${Mechanic}/${id}`)
       .then((response) => {
-        // Handle the response data after the mechanic is deleted
         console.log("Mechanic deleted:", response.data);
-        // Refresh the mechanic list by fetching the updated data
         fetchMechanics();
       })
       .catch((error) => {
@@ -20,14 +20,15 @@ export default function MechanicPage() {
       });
   };
 
-  const onEdit = (id, updatedMechanic) => {
-    // Send a PUT request to the server to update the mechanic with the given id
+  const onEdit = (id, formData) => {
     axios
-      .put(`http://localhost:8000/mechanics/${id}`, updatedMechanic)
+      .put(`${Mechanic}/${id}`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
-        // Handle the response data after the mechanic is updated
         console.log("Mechanic updated:", response.data);
-        // Refresh the mechanic list by fetching the updated data
         fetchMechanics();
       })
       .catch((error) => {
@@ -36,13 +37,10 @@ export default function MechanicPage() {
   };
 
   const fetchMechanics = () => {
-    // Fetch the mechanics from the server
     axios
-      .get("http://localhost:8000/mechanics")
+      .get(Mechanic)
       .then((response) => {
-        // Handle the response data
         console.log("Mechanics fetched:", response.data);
-        // Update the mechanics state with the fetched data
         setMechanics(response.data);
       })
       .catch((error) => {
@@ -50,7 +48,22 @@ export default function MechanicPage() {
       });
   };
 
-  // Fetch the mechanics when the component mounts
+  const addMechanics = (formData) => {
+    axios
+      .post(Mechanic, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log("Mechanic added:", response.data);
+        fetchMechanics();
+      })
+      .catch((error) => {
+        console.error("Error adding mechanic:", error);
+      });
+  };
+
   useEffect(() => {
     fetchMechanics();
   }, []);
@@ -58,7 +71,7 @@ export default function MechanicPage() {
   return (
     <div>
       <MechanicList mechanics={mechanics} onDelete={onDelete} onEdit={onEdit} />
-      <MechanicForm />
+      <MechanicForm onSubmit={addMechanics} />
     </div>
   );
 }

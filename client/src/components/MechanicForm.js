@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const MechanicForm = () => {
+const MechanicForm = ({ onSubmit }) => {
   const initialFormData = {
     firstName: "",
     middleName: "",
     lastName: "",
-    expertDomain: "",
+    speciality: "",
     experience: "",
   };
 
@@ -21,7 +21,7 @@ const MechanicForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(formData, null, 2));
+    onSubmit(formData);
   };
 
   return (
@@ -65,9 +65,9 @@ const MechanicForm = () => {
             <label>Expert Domain</label>
             <input
               type="text"
-              name="expertDomain"
+              name="speciality"
               placeholder="Expert Domain"
-              value={formData.expertDomain}
+              value={formData.speciality}
               onChange={handleChange}
             />
           </div>

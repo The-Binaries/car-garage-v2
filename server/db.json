@@ -1,47 +1,56 @@
 {
-    "cars": [
-        {
-            "id": 1,
-            "make": "BMW",
-            "model": "X5",
-            "color": "Black",
-            "year": 2019,
-            "plateNumber": "ABC123",
-            "fault": null
-        },
-        {
-            "id": 2,
-            "make": "Audi",
-            "model": "Q7",
-            "color": "White",
-            "year": 2018,
-            "plateNumber": "DEF456",
-            "fault": null
-        },
-        {
-            "id": 3,
-            "make": "Mercedes",
-            "model": "GLE",
-            "color": "Silver",
-            "year": 2017,
-            "plateNumber": "GHI789",
-            "fault": null
-        }
-    ],
-    "mechanics": [
-        {
-            "id": 1,
-            "firstName": "John",
-            "middleName": "Prasad",
-            "lastName": "Doe",
-            "speciality": "Engine",
-            "experience": 5
-        }
-    ],
-    "admin": [
-        {
-            "username": "admin",
-            "password": "admin"
-        }
-    ]
+  "cars": [
+    {
+      "id": "1",
+      "make": "BMW",
+      "model": "X5",
+      "color": "Black",
+      "year": 2019,
+      "plateNumber": "ABC123",
+      "fault": null
+    },
+    {
+      "id": "2",
+      "make": "Audi",
+      "model": "Q7",
+      "color": "White",
+      "year": 2018,
+      "plateNumber": "DEF456",
+      "fault": null
+    },
+    {
+      "id": "3",
+      "make": "Mercedes",
+      "model": "GLE",
+      "color": "Silver",
+      "year": 2017,
+      "plateNumber": "GHI789",
+      "fault": null
+    }
+  ],
+  "mechanics": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "middleName": "Prasad",
+      "lastName": "Doe",
+      "speciality": "Engine",
+      "experience": 5
+    },
+    {
+      "id": "088b",
+      "firstName": "Sea",
+      "middleName": "Moon",
+      "lastName": "Pandey",
+      "speciality": "Pipelining",
+      "experience": "500"
+    }
+  ],
+  "admin": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "id": "3b35"
+    }
+  ]
 }
