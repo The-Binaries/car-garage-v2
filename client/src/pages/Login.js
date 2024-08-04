@@ -15,40 +15,36 @@ function Login({ setAuth }) {
       const response = await axios.get(
         `http://localhost:8000/admin?username=${username}&password=${password}`
       );
-      if (response.data.length > 0) {
+      if (
+        response.data.length > 0 &&
+        response.data[0].username === username &&
+        response.data[0].password === password
+      ) {
         setAuth(true);
-        navigate("/dashboard"); // Navigate to the /dashboard route
+        navigate("/dashboard");
       } else {
         setError("Invalid username or password");
       }
     } catch (err) {
-      setError("An error occurred");
+      //   setError("An error occurred");
     }
   };
 
   return (
-    <div className="page-login">
+    <div className="h-full w-full mt-48">
       <Grid centered container>
         <Grid.Column width={9}>
-          {error && (
-            <Message warning icon>
-              <Message.Icon name="lock" />
-              <Message.Content>
-                <Message.Header>Login failed!</Message.Header>
-                <p>You might have misspelled your username or password!</p>
-              </Message.Content>
-            </Message>
-          )}
           <Segment>
             <Form onSubmit={handleSubmit}>
               <Form.Field>
-                <label>User</label>
+                <label>User Login</label>
                 <input
                   type="text"
                   name="user"
                   placeholder="User"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </Form.Field>
               <Form.Field>
@@ -59,6 +55,7 @@ function Login({ setAuth }) {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Field>
               <Button primary labeled icon type="submit">
@@ -67,6 +64,15 @@ function Login({ setAuth }) {
               </Button>
             </Form>
           </Segment>
+          {error && (
+            <Message negative icon={<Message.Icon name="lock" />}>
+              {/* <Message.Icon name="lock" /> */}
+              <Message.Content>
+                <Message.Header>Login failed!</Message.Header>
+                <p>Invalid username or password!</p>
+              </Message.Content>
+            </Message>
+          )}{" "}
         </Grid.Column>
       </Grid>
     </div>
