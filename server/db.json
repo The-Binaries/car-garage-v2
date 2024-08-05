@@ -21,12 +21,20 @@
   ],
   "mechanics": [
     {
-      "firstName": "Sea",
-      "middleName": "Moon",
-      "lastName": "Pandey",
+      "firstName": "Anu",
+      "middleName": "Rag",
+      "lastName": "Rayamajhi",
       "speciality": "Pipelining",
-      "experience": "50",
+      "experience": "5",
       "id": "088b"
+    },
+    {
+      "id": "9416",
+      "firstName": "Sourabh",
+      "middleName": "Boo",
+      "lastName": "Ra",
+      "speciality": "Plumber",
+      "experience": "4"
     }
   ],
   "admin": [
